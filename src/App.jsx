@@ -1,16 +1,19 @@
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
-import TasklList from "./TaskList"
-import AddTask from "./AddTask";
+import TaskList from "./pages/TaskList";
+import AddTask from "./pages/AddTask";
 import Navbar from "./components/Navbar";
+import { GlobalProvider } from "./contexts/GlobalContext";
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar/>
-      <Routes>
-        <Route path="/" element={<TasklList/>} />
-        <Route path="/add" element={<AddTask/>} />
-      </Routes>
-    </BrowserRouter>
+    <GlobalProvider>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<TaskList />} />
+          <Route path="/add" element={<AddTask />} />
+        </Routes>
+      </BrowserRouter>
+    </GlobalProvider>
   );
 }
 
