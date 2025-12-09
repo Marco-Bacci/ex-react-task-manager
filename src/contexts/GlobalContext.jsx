@@ -1,7 +1,9 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 export const GlobalContext = createContext();
 
 export function GlobalProvider({ children }) {
-  return <GlobalContext.Provider value="">{children}</GlobalContext.Provider>;
+  const [tasks, setTasks] = useState([]);
+
+  return <GlobalContext.Provider value={{tasks, setTasks}}>{children}</GlobalContext.Provider>;
 }
