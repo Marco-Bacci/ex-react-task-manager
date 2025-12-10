@@ -17,6 +17,7 @@ body {
 
 header {
   display: flex;
+  justify-content: center;
   align-items: center;
   background-color: rgb(48, 29, 117);
   padding: 30px;
@@ -54,6 +55,7 @@ header a:hover {
 .task-table td {
   padding: 15px 20px;
   text-align: left;
+  border-right: 2px solid rgba(0, 0, 0, 0.1);
 }
 
 .task-table th {
@@ -76,3 +78,4 @@ header a:hover {
   background-color: rgb(175, 150, 245);
   transition: background-color 0.2s ease;
 }
+
