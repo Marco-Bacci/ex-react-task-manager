@@ -1,9 +1,20 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo } from "react";
+const symbols = "!@#$%^&*()-_=+[]{}|;:',.<>?/`~";
 
 const AddTask = () => {
   const [title, setTitle] = useState("");
   const descriptionRef = useRef();
   const statusRef = useRef();
+
+  const taskError = useMemo(() => {
+    if (!title.trim()) {
+      return "Scrivi il nome della task";
+    }
+    if (title.split("").some((char) => symbols.includes(char))) {
+      return "Il nome non può contenere caratteri speciali";
+    }
+    return "";
+  }, [title]);
   return (
     <div className="container">
       <h1>ADD TASK</h1>
@@ -18,6 +29,7 @@ const AddTask = () => {
             onChange={(e) => setTitle(e.target.value)}
           />
         </label>
+        {taskError && <p style={{ color: "red" }}>{taskError}</p>}
         <label>
           {" "}
           descrizione task
