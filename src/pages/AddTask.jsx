@@ -15,10 +15,22 @@ const AddTask = () => {
     }
     return "";
   }, [title]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (taskError) return;
+    const newTask = {
+      title: title.trim(),
+      description: descriptionRef.current.value,
+      status: statusRef.current.value,
+    };
+    console.log(newTask);
+  };
+
   return (
     <div className="container">
       <h1>ADD TASK</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>
           {" "}
           task
@@ -47,6 +59,9 @@ const AddTask = () => {
             <option value="Done">Done</option>
           </select>
         </label>
+        <button type="submit" disabled={taskError}>
+          aggiungi task
+        </button>
       </form>
     </div>
   );
