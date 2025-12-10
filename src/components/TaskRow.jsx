@@ -1,4 +1,6 @@
-const TaskRow = ({ task }) => {
+import { memo } from "react";
+
+const TaskRow = memo(({ task }) => {
   const getStatusColor = (status) => {
     switch (status) {
       case "To do":
@@ -19,6 +21,6 @@ const TaskRow = ({ task }) => {
       <td>{new Date(task.createdAt).toLocaleDateString()}</td>
     </tr>
   );
-};
+});
 
 export default TaskRow;
