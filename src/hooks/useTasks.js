@@ -11,6 +11,10 @@ function useTasks() {
       .catch((error) => console.error(error));
   }, []);
 
+  const addTask = () => {};
+  const removeTask = () => {};
+  const updateTask = () => {};
+
   return { tasks };
 }
 
