@@ -5,7 +5,7 @@ function useTasks() {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    fetch(`${VITE_API_URL}/task`)
+    fetch(`${VITE_API_URL}/tasks`)
       .then((res) => res.json())
       .then((data) => setTasks(data))
       .catch((error) => console.error(error));
@@ -15,7 +15,7 @@ function useTasks() {
   const removeTask = () => {};
   const updateTask = () => {};
 
-  return { tasks };
+  return { tasks, addTask, removeTask, updateTask };
 }
 
 export default useTasks;
