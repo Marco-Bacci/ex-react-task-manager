@@ -21,26 +21,28 @@ const TaskList = () => {
     }
   };
 
-  const sortedTask = useMemo(() => {
-    return [...tasks].sort((a, b) => {
-      let comparison;
+  const filteredAndSortedTasks = useMemo(() => {
+    return [...tasks]
+      .filter((t) => t.title.toLowerCase().includes(searchQuery.toLowerCase()))
+      .sort((a, b) => {
+        let comparison;
 
-      if (sortBy === "title") {
-        comparison = a.title.localeCompare(b.title);
-      } else if (sortBy === "status") {
-        const statusOptions = ["To do", "Doing", "Done"];
-        const indexA = statusOptions.indexOf(a.status);
-        const indexB = statusOptions.indexOf(b.status);
-        comparison = indexA - indexB;
-      } else if (sortBy === "createdAt") {
-        const dateA = new Date(a.createdAt).getTime();
-        const dateB = new Date(b.createdAt).getTime();
-        comparison = dateA - dateB;
-      }
+        if (sortBy === "title") {
+          comparison = a.title.localeCompare(b.title);
+        } else if (sortBy === "status") {
+          const statusOptions = ["To do", "Doing", "Done"];
+          const indexA = statusOptions.indexOf(a.status);
+          const indexB = statusOptions.indexOf(b.status);
+          comparison = indexA - indexB;
+        } else if (sortBy === "createdAt") {
+          const dateA = new Date(a.createdAt).getTime();
+          const dateB = new Date(b.createdAt).getTime();
+          comparison = dateA - dateB;
+        }
 
-      return comparison * sortOrder;
-    });
-  }, [tasks, sortBy, sortOrder]);
+        return comparison * sortOrder;
+      });
+  }, [tasks, sortBy, sortOrder, searchQuery]);
 
   return (
     <div className="container">
@@ -68,7 +70,7 @@ const TaskList = () => {
           </tr>
         </thead>
         <tbody>
-          {sortedTask.map((task) => {
+          {filteredAndSortedTasks.map((task) => {
             return <TaskRow key={task.id} task={task} />;
           })}
         </tbody>
