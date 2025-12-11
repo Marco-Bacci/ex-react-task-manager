@@ -14,7 +14,7 @@ const Modal = ({
     <div className="modal-overlay" onClick={onClose}>
       <div
         className="modal"
-        onClick={(e) => e.stopPropagation()} // evita che il click interno chiuda la modale
+       
       >
         <button
           type="button"

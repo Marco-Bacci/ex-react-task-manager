@@ -151,7 +151,7 @@ button:hover{
   margin-top: 10px;
 }
 
-/* bottone X in alto a destra */
+
 .modal-close {
   position: absolute;
   top: 10px;
@@ -169,7 +169,7 @@ button:hover{
   transform: scale(1.1);
 }
 
-/* bottone secondario (annulla) */
+
 .btn-secondary {
   background-color: transparent;
   color: rgb(48, 29, 117);
@@ -180,9 +180,3 @@ button:hover{
   background-color: rgb(208, 189, 253);
 }
 
-/* piccola animazione di ingresso */
-@keyframes modal-fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(-10px) scale(0.97);
-  }
