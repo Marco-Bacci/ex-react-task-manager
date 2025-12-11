@@ -13,35 +13,43 @@ function useTasks() {
 
   const addTask = async (newTask) => {
     const response = await fetch(`${VITE_API_URL}/tasks`, {
-      method: `POST`,
+      method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newTask),
     });
+
     const { success, message, task } = await response.json();
-    if (!success) throw new error(message);
+    if (!success) throw new Error(message);
+
     setTasks((prev) => [...prev, task]);
   };
+
   const removeTask = async (taskId) => {
     const response = await fetch(`${VITE_API_URL}/tasks/${taskId}`, {
       method: "DELETE",
     });
+
     const { success, message } = await response.json();
-    if (!success) throw new error(message);
+    if (!success) throw new Error(message);
 
     setTasks((prev) => prev.filter((t) => t.id !== taskId));
   };
+
   const updateTask = async (updatedTask) => {
-    const response = await fetch(`${VITE_API_URL}/tasks`, {
-      method: `PUT`,
+    const response = await fetch(`${VITE_API_URL}/tasks/${updatedTask.id}`, {
+      method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updateTask),
+      body: JSON.stringify(updatedTask),
     });
-    const { success, message, task: NewTask } = await response.json();
-    if (!success) throw new error(message);
+
+    const { success, message, task } = await response.json();
+    if (!success) throw new Error(message);
+
+    setTasks((prev) =>
+      prev.map((oldTask) => (oldTask.id === task.id ? task : oldTask))
+    );
   };
-  setTasks((prev) =>
-    prev.map((oldTask) => (oldTask.id === newTask.id ? newTask : oldTask))
-  );
+
   return { tasks, addTask, removeTask, updateTask };
 }
 

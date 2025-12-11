@@ -12,10 +12,7 @@ const Modal = ({
 
   return createPortal(
     <div className="modal-overlay" onClick={onClose}>
-      <div
-        className="modal"
-       
-      >
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
         <button
           type="button"
           className="modal-close"

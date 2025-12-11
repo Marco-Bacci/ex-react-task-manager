@@ -10,7 +10,9 @@ body {
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-h1, h2, p{
+h1,
+h2,
+p {
   margin: 20px 0;
 }
 
@@ -107,8 +109,8 @@ button {
   cursor: pointer;
 }
 
-button:hover{
-  background-color: rgb(96, 75, 172) ;
+button:hover {
+  background-color: rgb(96, 75, 172);
 }
 /* ------ MODAL------ */
 
@@ -151,7 +153,6 @@ button:hover{
   margin-top: 10px;
 }
 
-
 .modal-close {
   position: absolute;
   top: 10px;
@@ -169,7 +170,6 @@ button:hover{
   transform: scale(1.1);
 }
 
-
 .btn-secondary {
   background-color: transparent;
   color: rgb(48, 29, 117);
@@ -180,3 +180,37 @@ button:hover{
   background-color: rgb(208, 189, 253);
 }
 
+/* ----- FORM MODAL ----- */
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.task-form .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal label {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.modal input,
+.modal select,
+.modal textarea {
+  margin: 5px 0 0;
+  padding: 10px 12px;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 1rem;
+}
+
+.modal textarea {
+  min-height: 100px;
+  resize: vertical;
+}
