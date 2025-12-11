@@ -5,6 +5,8 @@ import TaskRow from "../components/TaskRow";
 const TaskList = () => {
   const { tasks } = useContext(GlobalContext);
 
+  const [searchQuery, setSearchQuery] = useState("");
+
   const [sortBy, setSortBy] = useState("createdAt");
   const [sortOrder, setSortOrder] = useState("1");
 
@@ -43,6 +45,14 @@ const TaskList = () => {
   return (
     <div className="container">
       <h1>TASK LIST</h1>
+
+      <input
+        type="text"
+        placeholder="Cerca Task"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
+
       <table className="task-table">
         <thead>
           <tr>
