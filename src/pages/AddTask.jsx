@@ -44,7 +44,7 @@ const AddTask = () => {
       <form onSubmit={handleSubmit}>
         <label>
           {" "}
-          task
+          Task
           <input
             type="textarea"
             placeholder="nome task"
@@ -55,7 +55,7 @@ const AddTask = () => {
         {taskError && <p style={{ color: "red" }}>{taskError}</p>}
         <label>
           {" "}
-          descrizione task
+          Descrizione Task
           <input
             type="text"
             placeholder="descrizione task "
@@ -63,7 +63,7 @@ const AddTask = () => {
           />
         </label>
         <label>
-          stato
+          Stato
           <select ref={statusRef} defaultValue="To do">
             <option value="To do">To do</option>
             <option value="Doing">Doing</option>
@@ -71,7 +71,7 @@ const AddTask = () => {
           </select>
         </label>
         <button type="submit" disabled={taskError}>
-          aggiungi task
+          Aggiungi Task
         </button>
       </form>
     </div>
