@@ -1,9 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { GlobalContext } from "../contexts/GlobalContext";
 import TaskRow from "../components/TaskRow";
 
 const TaskList = () => {
   const { tasks } = useContext(GlobalContext);
+
+  const [sortBy, setSortBy] = useState("title")
+  const [sortOrder, setSortOrder] = useState("1")
 
   return (
     <div className="container">
