@@ -27,11 +27,21 @@ function useTasks() {
     });
     const { success, message } = await response.json();
     if (!success) throw new error(message);
-    
+
     setTasks((prev) => prev.filter((t) => t.id !== taskId));
   };
-  const updateTask = () => {};
-
+  const updateTask = async (updatedTask) => {
+    const response = await fetch(`${VITE_API_URL}/tasks`, {
+      method: `PUT`,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updateTask),
+    });
+    const { success, message, task: NewTask } = await response.json();
+    if (!success) throw new error(message);
+  };
+  setTasks((prev) =>
+    prev.map((oldTask) => (oldTask.id === newTask.id ? newTask : oldTask))
+  );
   return { tasks, addTask, removeTask, updateTask };
 }
 
