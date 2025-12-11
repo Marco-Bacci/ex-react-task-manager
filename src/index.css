@@ -112,6 +112,11 @@ button {
 button:hover {
   background-color: rgb(96, 75, 172);
 }
+
+th:hover{
+  cursor: pointer;
+  background-color: rgb(97, 72, 189) ;
+}
 /* ------ MODAL------ */
 
 .modal-overlay {
